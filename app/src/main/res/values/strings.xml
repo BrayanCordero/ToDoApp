@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">ToDoApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="event_save_btn">SAVE</string>
+    <string name="event_name">EVENT NAME</string>
+    <string name="event_category">EVENT CATEGORY</string>
+    <string name="event_date">EVENT DATE</string>
+    <string name="menu_home">HOME</string>
+    <string name="menu_add">ADD</string>
+    <string name="menu_details">DETAILS</string>
 </resources>
