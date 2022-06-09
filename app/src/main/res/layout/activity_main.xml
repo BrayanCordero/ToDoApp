@@ -14,8 +14,8 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:defaultNavHost="true"
-        android:navGraph="@navigation/app_navigation"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/app_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,5 +32,9 @@
         app:layout_constraintTop_toBottomOf="@+id/nav_container_fragment"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/app_menu" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

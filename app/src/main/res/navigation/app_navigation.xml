@@ -21,9 +21,9 @@
 
     <fragment
         android:id="@+id/EntryFragment"
-        android:name="com.example.todoapp.ui.EntryFragment"
+       android:name="com.example.todoapp.ui.EntryFragment"
         android:label="Entry Fragment"
-        tools:layout="@layout/fragment_details">
+        tools:layout="@layout/fragment_entry">
 
         <action
             android:id="@+id/action_entryFragment_to_mainFragment"

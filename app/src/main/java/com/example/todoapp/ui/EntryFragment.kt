@@ -1,33 +1,23 @@
 package com.example.todoapp.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
+import com.example.todoapp.databinding.FragmentEntryBinding
+import com.example.todoapp.models.Event
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EntryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EntryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val binding by lazy {
+        FragmentEntryBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -35,26 +25,41 @@ class EntryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_entry, container, false)
+
+        binding.eventNameEntry.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                // no-op right now
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                binding.eventSaveBtn.isEnabled = p0?.isNotEmpty() ?: false
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                // no-op right now
+            }
+
+        })
+
+        binding.eventSaveBtn.setOnClickListener {
+
+
+            val name = binding.eventNameEntry.text.toString()
+            val category = binding.eventCategoryEntry.text.toString()
+            val date = binding.eventCalendar.date.toString()
+
+            Event(name, category, date).also {
+                findNavController().navigate(
+                    R.id.action_entryFragment_to_mainFragment, bundleOf(
+                    Pair(EVENT_DATA, it)
+                ))
+            }
+        }
+
+        return binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EntryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EntryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        const val EVENT_DATA = "EVENT_DATA"
     }
 }

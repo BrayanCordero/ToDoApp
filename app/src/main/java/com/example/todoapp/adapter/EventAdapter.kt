@@ -43,6 +43,7 @@ class EventAdapter(
 
 
 //this class is getting user input and binding it to the model. two ways to handle the click
+//EventTodoBinding comes from event_todo.xml
 class EventViewHolder(
     private val binding: EventTodoBinding
     ) : RecyclerView.ViewHolder(binding.root) {

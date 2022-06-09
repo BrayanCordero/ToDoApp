@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">ToDoApp</string>
+    <string name="hello_blank_fragment">hello</string>
     <string name="event_save_btn">SAVE</string>
     <string name="event_name">EVENT NAME</string>
     <string name="event_category">EVENT CATEGORY</string>
@@ -7,4 +8,6 @@
     <string name="menu_home">HOME</string>
     <string name="menu_add">ADD</string>
     <string name="menu_details">DETAILS</string>
+    <string name="create_event">CREATE EVENT</string>
+
 </resources>
