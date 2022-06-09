@@ -22,7 +22,7 @@ class MainFragment : Fragment(), ClickHandler {
         FragmentMainBinding.inflate(layoutInflater)
     }
 
-    //Navbar home icon will direct to mainFragment?
+
     private val eventAdapter by lazy{
         EventAdapter(this){
             event-> findNavController().navigate(
@@ -73,13 +73,18 @@ class MainFragment : Fragment(), ClickHandler {
         }
     }
 
-    // when user clicks on an item it will navigate to details fragment
+    // when user clicks on an item it will navigate to details fragment with data
     override fun onEventItemClick(event: Event) {
         findNavController().navigate(
             R.id.action_mainFragment_to_detailsFragment,
             bundleOf(Pair(EntryFragment.EVENT_DATA, event))
         )
+
     }
+
+    // need this inorder to pass data to details fragment
+    companion object {
+        const val EVENT_DATA = "EVENT_DATA"}
 
 
 

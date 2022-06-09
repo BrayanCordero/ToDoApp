@@ -37,6 +37,9 @@
         tools:layout="@layout/fragment_details"
         android:label="Details Fragment">
 
+        <action
+            android:id="@+id/action_DetailsFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
     </fragment>
 
 
