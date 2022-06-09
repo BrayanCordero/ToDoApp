@@ -6,12 +6,14 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentEntryBinding
 import com.example.todoapp.models.Event
+import java.text.SimpleDateFormat
 
 
 class EntryFragment : Fragment() {
@@ -24,6 +26,17 @@ class EntryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        //formatting the date to show the correct date
+        val simpleDateFormat = SimpleDateFormat("MM/dd/yyyy")
+        var formattedDate : String
+
+        binding.eventCalendar.setOnDateChangeListener(CalendarView.OnDateChangeListener{ CalendarView, year, month, day ->
+            val monthToFormat = month+1
+            formattedDate = "$monthToFormat/$day/$year"
+        }).let{
+            formattedDate=simpleDateFormat.format(binding.eventCalendar.date)
+        }
         // Inflate the layout for this fragment
 
         binding.eventNameEntry.addTextChangedListener(object: TextWatcher {
@@ -46,7 +59,7 @@ class EntryFragment : Fragment() {
 
             val name = binding.eventNameEntry.text.toString()
             val category = binding.eventCategoryEntry.text.toString()
-            val date = binding.eventCalendar.date.toString()
+            val date =formattedDate
 
             Event(name, category, date).also {
                 findNavController().navigate(
