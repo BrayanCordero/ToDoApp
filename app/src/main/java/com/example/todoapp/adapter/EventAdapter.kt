@@ -11,11 +11,10 @@ class EventAdapter(
 
     // click handling with interface
     private val onEventClickHandler: ClickHandler,
-    private val eventList: MutableList<Event> = mutableListOf(),
+    private val eventList: MutableList<Event> = Singleton.eventList,
 
     // click handling with high order function
     private val onClickEventHighOrderFunction: (Event) -> Unit
-
 ) : RecyclerView.Adapter<EventViewHolder>() //logic for the Recycler view
 {
     //function that takes in an Event and updates the view when a new event is added
@@ -39,7 +38,8 @@ class EventAdapter(
             holder.bind(eventList[position], onEventClickHandler, onClickEventHighOrderFunction)
 
         override fun getItemCount(): Int = eventList.size
-    }
+
+}
 
 
 //this class is getting user input and binding it to the model. two ways to handle the click

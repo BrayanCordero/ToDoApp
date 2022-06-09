@@ -55,15 +55,12 @@ class EntryFragment : Fragment() {
         })
 
         binding.eventSaveBtn.setOnClickListener {
-
-
             val name = binding.eventNameEntry.text.toString()
             val category = binding.eventCategoryEntry.text.toString()
             val date =formattedDate
 
             Event(name, category, date).also {
-                findNavController().navigate(
-                    R.id.action_entryFragment_to_mainFragment, bundleOf(
+                findNavController().navigate(R.id.action_entryFragment_to_MainFragment, bundleOf(
                     Pair(EVENT_DATA, it)
                 ))
             }
