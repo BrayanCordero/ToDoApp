@@ -5,4 +5,6 @@ import com.example.todoapp.models.Event
 interface ClickHandler {
 
     fun onEventItemClick(event: Event)
+
+
 }

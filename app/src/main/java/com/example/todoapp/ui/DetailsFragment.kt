@@ -20,7 +20,7 @@ class DetailsFragment : Fragment(){
 
 
     // Event object that will hold the incoming data
-    private lateinit var newEvent: Event
+    private var newEvent: Event? = null
 
     //newEvent is being set to data coming in from click event in main fragment
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,9 +39,9 @@ class DetailsFragment : Fragment(){
 
         //mapping the text fields in the xml file to the incoming data
 
-        binding.eventNameDetails.text=newEvent.name
-        binding.eventCategoryDetails.text = newEvent.category
-        binding.eventDateDetails.text = newEvent.date
+        binding.eventNameDetails.text= newEvent?.name
+        binding.eventCategoryDetails.text = newEvent?.category
+        binding.eventDateDetails.text = newEvent?.date
 
         return binding.root
     }

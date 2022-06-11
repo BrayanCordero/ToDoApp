@@ -7,11 +7,13 @@ import com.example.todoapp.databinding.EventTodoBinding
 import com.example.todoapp.models.Event
 
 
+
 class EventAdapter(
 
     // click handling with interface
     private val onEventClickHandler: ClickHandler,
     private val eventList: MutableList<Event> = Singleton.eventList,
+//    private var sortList: List<Event>,
 
     // click handling with high order function
     private val onClickEventHighOrderFunction: (Event) -> Unit
@@ -22,7 +24,6 @@ class EventAdapter(
         eventList.add(event)
         notifyItemInserted(eventList.indexOf(event))
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder =
         EventViewHolder(
@@ -64,3 +65,16 @@ class EventViewHolder(
         }
     }
 }
+
+//sorting list by date
+//class CompareDate(event: Event?): Comparator<Event?> {
+//    override fun compare(o1: Event?, o2: Event?): Int {
+//        if(o1 == null || o2 == null){
+//            return 0;
+//        }
+//        return o1.date.compareTo(o2.date)
+//    }
+//}
+
+
+

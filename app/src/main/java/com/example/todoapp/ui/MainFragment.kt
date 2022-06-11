@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todoapp.R
 import com.example.todoapp.adapter.ClickHandler
 import com.example.todoapp.adapter.EventAdapter
+import com.example.todoapp.adapter.Singleton
 import com.example.todoapp.databinding.FragmentMainBinding
 import com.example.todoapp.models.Event
+import java.util.*
 
 
 class MainFragment : Fragment(), ClickHandler {
@@ -31,6 +33,8 @@ class MainFragment : Fragment(), ClickHandler {
             )
         }
     }
+
+
 
     //Let events be null if there are no event object to populate the view.
     private var newEvent: Event?=null
@@ -55,7 +59,7 @@ class MainFragment : Fragment(), ClickHandler {
                 false)
             adapter = eventAdapter
         }
-
+//When user click create event redirect to entry fragment
         binding.createEvent.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_entryFragment)
         }
@@ -71,7 +75,10 @@ class MainFragment : Fragment(), ClickHandler {
             newEvent = null
             arguments = null
         }
+
+
     }
+
 
     // when user clicks on an item it will navigate to details fragment with data
     override fun onEventItemClick(event: Event) {
@@ -86,8 +93,5 @@ class MainFragment : Fragment(), ClickHandler {
     companion object {
         const val EVENT_DATA = "EVENT_DATA"}
 
-
-
-
-
 }
+
