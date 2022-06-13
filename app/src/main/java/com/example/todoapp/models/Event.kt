@@ -6,7 +6,8 @@ data class Event(
 
     val name: String,
     val category: String,
-    val date: String
+    val date: String,
+    val milliDate : Long
 
 ):Serializable
 

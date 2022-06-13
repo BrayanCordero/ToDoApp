@@ -28,7 +28,7 @@ class EventAdapter(
 
     fun sortedDate(event: Event): List<Event>{
         eventList.add(event)
-        var sortedList = eventList.sortedBy {it.name}
+        var sortedList = eventList.sortedBy {it.milliDate}
         Singleton.eventList.clear()
         println(sortedList)
         sortedList.forEach{Singleton.eventList.add(it)}
