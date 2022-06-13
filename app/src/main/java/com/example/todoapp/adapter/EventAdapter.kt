@@ -13,7 +13,7 @@ class EventAdapter(
     // click handling with interface
     private val onEventClickHandler: ClickHandler,
     private val eventList: MutableList<Event> = Singleton.eventList,
-//    private var sortList: List<Event>,
+
 
     // click handling with high order function
     private val onClickEventHighOrderFunction: (Event) -> Unit
@@ -21,8 +21,20 @@ class EventAdapter(
 {
     //function that takes in an Event and updates the view when a new event is added
     fun updateEventList(event: Event){
+//        eventList.add(event)
+        notifyItemInserted(sortedDate(event).indexOf(event))
+
+    }
+
+    fun sortedDate(event: Event): List<Event>{
         eventList.add(event)
-        notifyItemInserted(eventList.indexOf(event))
+        var sortedList = eventList.sortedBy {it.name}
+        Singleton.eventList.clear()
+        println(sortedList)
+        sortedList.forEach{Singleton.eventList.add(it)}
+        println(Singleton.eventList)
+        notifyItemInserted(sortedList.indexOf(event))
+        return sortedList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder =

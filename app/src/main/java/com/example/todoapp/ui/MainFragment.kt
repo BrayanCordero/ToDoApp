@@ -43,6 +43,7 @@ class MainFragment : Fragment(), ClickHandler {
         super.onCreate(savedInstanceState)
         arguments?.let {
             newEvent= it.getSerializable(EntryFragment.EVENT_DATA) as? Event
+
         }
     }
 
@@ -63,6 +64,7 @@ class MainFragment : Fragment(), ClickHandler {
         binding.createEvent.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_entryFragment)
         }
+
 
         return binding.root
     }
